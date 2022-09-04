@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'docusaurus-bsp-plugin',
-  tagline: 'A Docusaurus plugin that adds content via BSP.',
+  tagline: 'Add content to Docusaurus via BSP',
   url: 'https://BotTech.github.io',
   baseUrl: '/docusaurus-bsp-plugin/',
   onBrokenLinks: 'throw',
@@ -32,11 +32,13 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          routeBasePath: '/', // Serve the docs at the site's root
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl: 'https://github.com/BotTech/docusaurus-bsp-plugin/tree/main/website/',
         },
+        blog: false,
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -75,7 +77,7 @@ const config = {
             items: [
               {
                 label: 'Tutorial',
-                to: '/docs/intro',
+                to: '/intro',
               },
             ],
           },
