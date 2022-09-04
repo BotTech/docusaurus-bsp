@@ -31,24 +31,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version-file: 'website/.nvmrc'
-          cache: yarn
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v2
-      - name: Get yarn cache
-        id: yarn-cache
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - name: Cache dependencies
-        uses: actions/cache@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
         with:
-          path: ${{ steps.yarn-cache.outputs.dir }}
-          key: ${{ runner.os }}-website-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-website-
+          cache: yarn
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       - name: Build with Docusaurus
@@ -56,7 +45,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: ./build
+          path: website/build
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
